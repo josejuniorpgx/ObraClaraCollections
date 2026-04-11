@@ -1,0 +1,62 @@
+info:
+  name: projects_invitations_create
+  type: http
+  seq: 2
+  tags:
+    - invitations
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v1/projects/:project_pk/invitations/"
+  params:
+    - name: project_pk
+      value: ""
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "role": "owner",
+        "job_title": ""
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 201 Response
+    request:
+      url: "{{baseUrl}}/api/v1/projects/:project_pk/invitations/"
+      method: POST
+      params:
+        - name: project_pk
+          value: ""
+          type: path
+      body:
+        type: json
+        data: |-
+          {
+            "role": "owner",
+            "job_title": ""
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "role": "owner",
+            "job_title": ""
+          }
+
+docs: List project invitations or create a new one. OWNER only.

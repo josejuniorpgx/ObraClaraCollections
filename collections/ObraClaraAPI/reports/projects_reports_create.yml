@@ -1,0 +1,65 @@
+info:
+  name: projects_reports_create
+  type: http
+  seq: 2
+  tags:
+    - reports
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v1/projects/:project_pk/reports/"
+  params:
+    - name: project_pk
+      value: ""
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "title": "",
+        "period_start": "",
+        "period_end": ""
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 201 Response
+    request:
+      url: "{{baseUrl}}/api/v1/projects/:project_pk/reports/"
+      method: POST
+      params:
+        - name: project_pk
+          value: ""
+          type: path
+      body:
+        type: json
+        data: |-
+          {
+            "title": "",
+            "period_start": "",
+            "period_end": ""
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "title": "",
+            "period_start": "",
+            "period_end": ""
+          }
+
+docs: CRUD for reports scoped to a project.

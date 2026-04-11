@@ -1,7 +1,7 @@
 opencollection: 1.0.0
 
 info:
-  name: ObraClaraApi
+  name: ObraClaraAPI
 bundled: false
 extensions:
   bruno:

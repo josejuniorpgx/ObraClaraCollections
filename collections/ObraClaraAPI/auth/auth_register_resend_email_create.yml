@@ -1,0 +1,54 @@
+info:
+  name: auth_register_resend_email_create
+  type: http
+  seq: 13
+  tags:
+    - auth
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v1/auth/register/resend-email/"
+  body:
+    type: json
+    data: |-
+      {
+        "email": ""
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 201 Response
+    request:
+      url: "{{baseUrl}}/api/v1/auth/register/resend-email/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "email": ""
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "detail": ""
+          }
+
+docs: |-
+  Resends another email to an unverified email.
+
+  Accepts the following POST parameter: email.

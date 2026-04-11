@@ -1,0 +1,54 @@
+info:
+  name: auth_register_verify_email_create
+  type: http
+  seq: 12
+  tags:
+    - auth
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v1/auth/register/verify-email/"
+  body:
+    type: json
+    data: |-
+      {
+        "key": ""
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    request:
+      url: "{{baseUrl}}/api/v1/auth/register/verify-email/"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "key": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "detail": ""
+          }
+
+docs: |-
+  Verifies the email associated with the provided key.
+
+  Accepts the following POST parameter: key.

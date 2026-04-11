@@ -1,0 +1,66 @@
+info:
+  name: projects_retrieve
+  type: http
+  seq: 3
+  tags:
+    - projects
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/v1/projects/:id/"
+  params:
+    - name: id
+      value: ""
+      type: path
+      description: Un Cadena UUID que identifique este project.
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    request:
+      url: "{{baseUrl}}/api/v1/projects/:id/"
+      method: GET
+      params:
+        - name: id
+          value: ""
+          type: path
+          description: Un Cadena UUID que identifique este project.
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "id": "",
+            "name": "",
+            "project_type": "construction",
+            "image": "",
+            "location": "",
+            "budget_estimated": "",
+            "total_spent": "",
+            "remaining_budget": "",
+            "start_date": "",
+            "end_date": "",
+            "created_by": "",
+            "client_info": "",
+            "created": "",
+            "modified": "",
+            "user_role": "",
+            "user_permissions": "",
+            "progress_percentage": "",
+            "last_progress_update": ""
+          }
+
+docs: CRUD for projects scoped to the authenticated user's participation.

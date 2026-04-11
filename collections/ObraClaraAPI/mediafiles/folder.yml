@@ -1,0 +1,7 @@
+info:
+  name: mediafiles
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

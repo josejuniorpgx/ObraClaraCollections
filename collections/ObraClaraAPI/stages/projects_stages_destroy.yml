@@ -1,0 +1,50 @@
+info:
+  name: projects_stages_destroy
+  type: http
+  seq: 4
+  tags:
+    - stages
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/projects/:project_pk/stages/:id/"
+  params:
+    - name: id
+      value: ""
+      type: path
+      description: Un Cadena UUID que identifique este stage.
+    - name: project_pk
+      value: ""
+      type: path
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 204 Response
+    description: No response body
+    request:
+      url: "{{baseUrl}}/api/v1/projects/:project_pk/stages/:id/"
+      method: DELETE
+      params:
+        - name: id
+          value: ""
+          type: path
+          description: Un Cadena UUID que identifique este stage.
+        - name: project_pk
+          value: ""
+          type: path
+    response:
+      status: 204
+      statusText: No Content
+      body:
+        type: text
+        data: ""
+
+docs: CRUD for stages scoped to a project.
