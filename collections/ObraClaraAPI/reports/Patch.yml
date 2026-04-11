@@ -1,20 +1,20 @@
 info:
   name: Patch
   type: http
-  seq: 4
+  seq: 8
   tags:
   - reports
 http:
   method: PATCH
   url: '{{baseUrl}}/api/v1/projects/:project_pk/reports/:id/'
   params:
-  - name: id
-    value: ''
-    type: path
-    description: Un Cadena UUID que identifique este report.
   - name: project_pk
     value: ''
     type: path
+  - name: id
+    value: ''
+    type: path
+    description: UUID del report.
   body:
     type: json
   auth: inherit
@@ -29,11 +29,10 @@ examples:
     url: '{{baseUrl}}/api/v1/projects/:project_pk/reports/:id/'
     method: PATCH
     params:
-    - name: id
+    - name: project_pk
       value: ''
       type: path
-      description: Un Cadena UUID que identifique este report.
-    - name: project_pk
+    - name: id
       value: ''
       type: path
     body:
@@ -41,8 +40,8 @@ examples:
       data: |-
         {
           "title": "",
-          "visible_to_client": false,
-          "status": "draft"
+          "visible_to_client": true,
+          "status": "published"
         }
   response:
     status: 200
@@ -55,10 +54,12 @@ examples:
       data: |-
         {
           "title": "",
-          "visible_to_client": false,
-          "status": "draft"
+          "visible_to_client": true,
+          "status": "published"
         }
-docs: CRUD for reports scoped to a project.
+docs: |-
+  Update a draft report (title, visibility, status).
+  OWNER only. Only draft reports can be modified. Set status to "published" to publish.
 script:
   tests: |-
     test("Status is 200", function() {

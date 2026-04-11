@@ -28,6 +28,31 @@ http:
     type: query
     description: Un término de búsqueda.
     disabled: true
+  - name: project
+    value: ''
+    type: query
+    description: Filtrar por proyecto (UUID).
+    disabled: true
+  - name: stage
+    value: ''
+    type: query
+    description: Filtrar por etapa (UUID).
+    disabled: true
+  - name: date_from
+    value: ''
+    type: query
+    description: Fecha mínima (YYYY-MM-DD).
+    disabled: true
+  - name: date_to
+    value: ''
+    type: query
+    description: Fecha máxima (YYYY-MM-DD).
+    disabled: true
+  - name: visible_to_client
+    value: ''
+    type: query
+    description: Filtrar por visibilidad al cliente (true/false).
+    disabled: true
   auth: inherit
 settings:
   encodeUrl: true
@@ -43,22 +68,38 @@ examples:
     - name: ordering
       value: ''
       type: query
-      description: Qué campo usar para ordenar los resultados.
       disabled: true
     - name: page
       value: ''
       type: query
-      description: Un número de página dentro del conjunto de resultados paginado.
       disabled: true
     - name: page_size
       value: ''
       type: query
-      description: Número de resultados a devolver por página.
       disabled: true
     - name: search
       value: ''
       type: query
-      description: Un término de búsqueda.
+      disabled: true
+    - name: project
+      value: ''
+      type: query
+      disabled: true
+    - name: stage
+      value: ''
+      type: query
+      disabled: true
+    - name: date_from
+      value: ''
+      type: query
+      disabled: true
+    - name: date_to
+      value: ''
+      type: query
+      disabled: true
+    - name: visible_to_client
+      value: ''
+      type: query
       disabled: true
   response:
     status: 200

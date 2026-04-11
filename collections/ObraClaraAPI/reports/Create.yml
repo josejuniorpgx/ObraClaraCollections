@@ -1,7 +1,7 @@
 info:
   name: Create
   type: http
-  seq: 2
+  seq: 5
   tags:
   - reports
 http:
@@ -46,11 +46,27 @@ examples:
       type: json
       data: |-
         {
+          "id": "",
           "title": "",
           "period_start": "",
-          "period_end": ""
+          "period_end": "",
+          "data_snapshot": {},
+          "status": "draft",
+          "visible_to_client": true,
+          "generated_by": {
+            "id": "",
+            "email": "",
+            "first_name": "",
+            "last_name": "",
+            "profile_image": null
+          },
+          "published_at": null,
+          "created": "",
+          "modified": ""
         }
-docs: CRUD for reports scoped to a project.
+docs: |-
+  Create a report and generate its data snapshot.
+  OWNER only. Snapshot includes project info, team, KPIs, progress, expenses, and incidents for the given period.
 script:
   post-response: |-
     const body = res.getBody();

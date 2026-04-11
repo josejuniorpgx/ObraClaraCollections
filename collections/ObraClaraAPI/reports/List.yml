@@ -1,13 +1,16 @@
 info:
   name: List
   type: http
-  seq: 1
+  seq: 3
   tags:
   - reports
 http:
   method: GET
   url: '{{baseUrl}}/api/v1/projects/:project_pk/reports/'
   params:
+  - name: project_pk
+    value: ''
+    type: path
   - name: ordering
     value: ''
     type: query
@@ -23,9 +26,6 @@ http:
     type: query
     description: Número de resultados a devolver por página.
     disabled: true
-  - name: project_pk
-    value: ''
-    type: path
   - name: search
     value: ''
     type: query
@@ -43,28 +43,24 @@ examples:
     url: '{{baseUrl}}/api/v1/projects/:project_pk/reports/'
     method: GET
     params:
+    - name: project_pk
+      value: ''
+      type: path
     - name: ordering
       value: ''
       type: query
-      description: Qué campo usar para ordenar los resultados.
       disabled: true
     - name: page
       value: ''
       type: query
-      description: Un número de página dentro del conjunto de resultados paginado.
       disabled: true
     - name: page_size
       value: ''
       type: query
-      description: Número de resultados a devolver por página.
       disabled: true
-    - name: project_pk
-      value: ''
-      type: path
     - name: search
       value: ''
       type: query
-      description: Un término de búsqueda.
       disabled: true
   response:
     status: 200
@@ -76,9 +72,9 @@ examples:
       type: json
       data: |-
         {
-          "count": 123,
-          "next": "http://api.example.org/accounts/?page=4",
-          "previous": "http://api.example.org/accounts/?page=2",
+          "count": 0,
+          "next": null,
+          "previous": null,
           "results": [
             {
               "id": "",
@@ -86,14 +82,22 @@ examples:
               "period_start": "",
               "period_end": "",
               "status": "draft",
-              "visible_to_client": false,
-              "generated_by": "",
-              "published_at": "",
+              "visible_to_client": true,
+              "generated_by": {
+                "id": "",
+                "email": "",
+                "first_name": "",
+                "last_name": "",
+                "profile_image": null
+              },
+              "published_at": null,
               "created": ""
             }
           ]
         }
-docs: CRUD for reports scoped to a project.
+docs: |-
+  List reports for a project.
+  VIEWER/CLIENT only see published reports. OWNER and COLLABORATOR see all.
 script:
   tests: |-
     test("Status is 200", function() {

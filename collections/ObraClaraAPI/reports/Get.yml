@@ -1,20 +1,20 @@
 info:
   name: Get
   type: http
-  seq: 3
+  seq: 6
   tags:
   - reports
 http:
   method: GET
   url: '{{baseUrl}}/api/v1/projects/:project_pk/reports/:id/'
   params:
-  - name: id
-    value: ''
-    type: path
-    description: Un Cadena UUID que identifique este report.
   - name: project_pk
     value: ''
     type: path
+  - name: id
+    value: ''
+    type: path
+    description: UUID del report.
   auth: inherit
 settings:
   encodeUrl: true
@@ -27,11 +27,10 @@ examples:
     url: '{{baseUrl}}/api/v1/projects/:project_pk/reports/:id/'
     method: GET
     params:
-    - name: id
+    - name: project_pk
       value: ''
       type: path
-      description: Un Cadena UUID que identifique este report.
-    - name: project_pk
+    - name: id
       value: ''
       type: path
   response:
@@ -48,15 +47,30 @@ examples:
           "title": "",
           "period_start": "",
           "period_end": "",
-          "data_snapshot": "",
+          "data_snapshot": {
+            "project": {},
+            "team": [],
+            "kpis": {},
+            "progress_entries": [],
+            "expenses": {},
+            "incidents": []
+          },
           "status": "draft",
-          "visible_to_client": false,
-          "generated_by": "",
-          "published_at": "",
+          "visible_to_client": true,
+          "generated_by": {
+            "id": "",
+            "email": "",
+            "first_name": "",
+            "last_name": "",
+            "profile_image": null
+          },
+          "published_at": null,
           "created": "",
           "modified": ""
         }
-docs: CRUD for reports scoped to a project.
+docs: |-
+  Retrieve a report with its full data_snapshot.
+  VIEWER/CLIENT only see published reports.
 script:
   tests: |-
     test("Status is 200", function() {

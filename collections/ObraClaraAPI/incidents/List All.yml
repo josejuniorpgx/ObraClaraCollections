@@ -28,6 +28,51 @@ http:
     type: query
     description: Un término de búsqueda.
     disabled: true
+  - name: project
+    value: ''
+    type: query
+    description: Filtrar por proyecto (UUID).
+    disabled: true
+  - name: status
+    value: ''
+    type: query
+    description: "Estado exacto: pending, in_progress, waiting, resolved."
+    disabled: true
+  - name: priority
+    value: ''
+    type: query
+    description: "Prioridad exacta: high, medium, low."
+    disabled: true
+  - name: incident_type
+    value: ''
+    type: query
+    description: "Tipo exacto: materials, climate, safety, design, labor, other."
+    disabled: true
+  - name: impact_level
+    value: ''
+    type: query
+    description: "Nivel de impacto exacto: minor, moderate, major."
+    disabled: true
+  - name: responsible
+    value: ''
+    type: query
+    description: Filtrar por responsable (UUID de usuario).
+    disabled: true
+  - name: progress_entry
+    value: ''
+    type: query
+    description: Filtrar por entrada de progreso (UUID).
+    disabled: true
+  - name: date_from
+    value: ''
+    type: query
+    description: Fecha mínima de reporte (YYYY-MM-DD).
+    disabled: true
+  - name: date_to
+    value: ''
+    type: query
+    description: Fecha máxima de reporte (YYYY-MM-DD).
+    disabled: true
   auth: inherit
 settings:
   encodeUrl: true
@@ -43,22 +88,54 @@ examples:
     - name: ordering
       value: ''
       type: query
-      description: Qué campo usar para ordenar los resultados.
       disabled: true
     - name: page
       value: ''
       type: query
-      description: Un número de página dentro del conjunto de resultados paginado.
       disabled: true
     - name: page_size
       value: ''
       type: query
-      description: Número de resultados a devolver por página.
       disabled: true
     - name: search
       value: ''
       type: query
-      description: Un término de búsqueda.
+      disabled: true
+    - name: project
+      value: ''
+      type: query
+      disabled: true
+    - name: status
+      value: ''
+      type: query
+      disabled: true
+    - name: priority
+      value: ''
+      type: query
+      disabled: true
+    - name: incident_type
+      value: ''
+      type: query
+      disabled: true
+    - name: impact_level
+      value: ''
+      type: query
+      disabled: true
+    - name: responsible
+      value: ''
+      type: query
+      disabled: true
+    - name: progress_entry
+      value: ''
+      type: query
+      disabled: true
+    - name: date_from
+      value: ''
+      type: query
+      disabled: true
+    - name: date_to
+      value: ''
+      type: query
       disabled: true
   response:
     status: 200
