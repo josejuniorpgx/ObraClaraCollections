@@ -1,0 +1,28 @@
+info:
+  name: Stats
+  type: http
+  seq: 14
+  tags:
+  - expenses
+http:
+  method: GET
+  url: '{{baseUrl}}/api/v1/expenses/stats/'
+  auth: inherit
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+examples:
+- name: 200 Response
+  description: No response body
+  request:
+    url: '{{baseUrl}}/api/v1/expenses/stats/'
+    method: GET
+  response:
+    status: 200
+    statusText: OK
+    body:
+      type: text
+      data: ''
+docs: Monthly expense stats across all projects where the user participates.

@@ -1,0 +1,47 @@
+info:
+  name: Get by Token
+  type: http
+  seq: 4
+  tags:
+  - invitations
+http:
+  method: GET
+  url: '{{baseUrl}}/api/v1/invitations/:token/'
+  params:
+  - name: token
+    value: ''
+    type: path
+  auth: none
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+examples:
+- name: 200 Response
+  request:
+    url: '{{baseUrl}}/api/v1/invitations/:token/'
+    method: GET
+    params:
+    - name: token
+      value: ''
+      type: path
+  response:
+    status: 200
+    statusText: OK
+    headers:
+    - name: Content-Type
+      value: application/json
+    body:
+      type: json
+      data: |-
+        {
+          "project_name": "",
+          "role": "owner",
+          "role_label": "",
+          "job_title": "",
+          "invited_by_name": "",
+          "is_usable": false,
+          "expires_at": ""
+        }
+docs: 'Public view: see invitation info before accepting. No auth required.'

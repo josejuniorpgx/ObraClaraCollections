@@ -1,0 +1,50 @@
+info:
+  name: Confirm Reset
+  type: http
+  seq: 2
+  tags:
+  - auth
+http:
+  method: POST
+  url: '{{baseUrl}}/api/v1/auth/password/reset/confirm/'
+  body:
+    type: json
+  auth: none
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+examples:
+- name: 200 Response
+  request:
+    url: '{{baseUrl}}/api/v1/auth/password/reset/confirm/'
+    method: POST
+    body:
+      type: json
+      data: |-
+        {
+          "new_password1": "",
+          "new_password2": "",
+          "uid": "",
+          "token": ""
+        }
+  response:
+    status: 200
+    statusText: OK
+    headers:
+    - name: Content-Type
+      value: application/json
+    body:
+      type: json
+      data: |-
+        {
+          "detail": ""
+        }
+docs: |-
+  Password reset e-mail link is confirmed, therefore
+  this resets the user's password.
+
+  Accepts the following POST parameters: token, uid,
+      new_password1, new_password2
+  Returns the success/fail message.

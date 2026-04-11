@@ -1,0 +1,62 @@
+info:
+  name: Get
+  type: http
+  seq: 3
+  tags:
+  - incidents
+http:
+  method: GET
+  url: '{{baseUrl}}/api/v1/projects/:project_pk/incidents/:id/'
+  params:
+  - name: id
+    value: ''
+    type: path
+    description: Un Cadena UUID que identifique este incident.
+  - name: project_pk
+    value: ''
+    type: path
+  auth: inherit
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+examples:
+- name: 200 Response
+  request:
+    url: '{{baseUrl}}/api/v1/projects/:project_pk/incidents/:id/'
+    method: GET
+    params:
+    - name: id
+      value: ''
+      type: path
+      description: Un Cadena UUID que identifique este incident.
+    - name: project_pk
+      value: ''
+      type: path
+  response:
+    status: 200
+    statusText: OK
+    headers:
+    - name: Content-Type
+      value: application/json
+    body:
+      type: json
+      data: |-
+        {
+          "id": "",
+          "reported_date": "",
+          "priority": "high",
+          "incident_type": "materials",
+          "impact_level": "minor",
+          "description": "",
+          "action_plan": "",
+          "status": "pending",
+          "responsible": "",
+          "progress_entry": "",
+          "created_by": "",
+          "created": "",
+          "modified": "",
+          "follow_ups_count": 0
+        }
+docs: CRUD for incidents scoped to a project.

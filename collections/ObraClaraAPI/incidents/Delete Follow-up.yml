@@ -1,0 +1,48 @@
+info:
+  name: Delete Follow-up
+  type: http
+  seq: 12
+  tags:
+  - incidents
+http:
+  method: DELETE
+  url: '{{baseUrl}}/api/v1/projects/:project_pk/incidents/:incident_pk/follow-ups/:id/'
+  params:
+  - name: id
+    value: ''
+    type: path
+  - name: incident_pk
+    value: ''
+    type: path
+  - name: project_pk
+    value: ''
+    type: path
+  auth: inherit
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+examples:
+- name: 204 Response
+  description: No response body
+  request:
+    url: '{{baseUrl}}/api/v1/projects/:project_pk/incidents/:incident_pk/follow-ups/:id/'
+    method: DELETE
+    params:
+    - name: id
+      value: ''
+      type: path
+    - name: incident_pk
+      value: ''
+      type: path
+    - name: project_pk
+      value: ''
+      type: path
+  response:
+    status: 204
+    statusText: No Content
+    body:
+      type: text
+      data: ''
+docs: Retrieve, update, or delete a follow-up.

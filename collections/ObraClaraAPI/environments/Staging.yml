@@ -1,7 +1,7 @@
-name: Dev
+name: Staging
 variables:
   - name: baseUrl
-    value: http://0.0.0.0:8000
+    value: https://staging.obraclara.com
   - name: token
     value: ""
   - name: refresh_token
