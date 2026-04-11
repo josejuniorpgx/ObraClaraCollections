@@ -1,16 +1,13 @@
 info:
-  name: List Follow-ups
+  name: List
   type: http
   seq: 7
   tags:
-  - incidents
+  - projects
 http:
   method: GET
-  url: '{{baseUrl}}/api/v1/projects/:project_pk/incidents/:incident_pk/follow-ups/'
+  url: '{{baseUrl}}/api/v1/projects/:project_pk/participants/'
   params:
-  - name: incident_pk
-    value: ''
-    type: path
   - name: ordering
     value: ''
     type: query
@@ -43,12 +40,9 @@ settings:
 examples:
 - name: 200 Response
   request:
-    url: '{{baseUrl}}/api/v1/projects/:project_pk/incidents/:incident_pk/follow-ups/'
+    url: '{{baseUrl}}/api/v1/projects/:project_pk/participants/'
     method: GET
     params:
-    - name: incident_pk
-      value: ''
-      type: path
     - name: ordering
       value: ''
       type: query
@@ -88,13 +82,13 @@ examples:
           "results": [
             {
               "id": "",
-              "comment": "",
-              "status": "",
-              "visible_to_client": false,
-              "created_by": "",
-              "created": "",
-              "modified": ""
+              "user": "",
+              "role": "owner",
+              "role_label": "",
+              "job_title": "",
+              "is_active": false,
+              "joined_at": ""
             }
           ]
         }
-docs: List and create follow-ups for an incident.
+docs: List active participants or invite a new one.

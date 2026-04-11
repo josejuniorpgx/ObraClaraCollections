@@ -1,12 +1,12 @@
 info:
-  name: Get Category
+  name: Update
   type: http
-  seq: 3
+  seq: 10
   tags:
-  - expenses
+  - projects
 http:
-  method: GET
-  url: '{{baseUrl}}/api/v1/projects/:project_pk/expenses/categories/:id/'
+  method: PUT
+  url: '{{baseUrl}}/api/v1/projects/:project_pk/participants/:id/'
   params:
   - name: id
     value: ''
@@ -14,6 +14,8 @@ http:
   - name: project_pk
     value: ''
     type: path
+  body:
+    type: json
   auth: inherit
 settings:
   encodeUrl: true
@@ -23,8 +25,8 @@ settings:
 examples:
 - name: 200 Response
   request:
-    url: '{{baseUrl}}/api/v1/projects/:project_pk/expenses/categories/:id/'
-    method: GET
+    url: '{{baseUrl}}/api/v1/projects/:project_pk/participants/:id/'
+    method: PUT
     params:
     - name: id
       value: ''
@@ -32,6 +34,14 @@ examples:
     - name: project_pk
       value: ''
       type: path
+    body:
+      type: json
+      data: |-
+        {
+          "role": "owner",
+          "job_title": "",
+          "is_active": false
+        }
   response:
     status: 200
     statusText: OK
@@ -43,7 +53,11 @@ examples:
       data: |-
         {
           "id": "",
-          "name": "",
-          "image": ""
+          "user": "",
+          "role": "owner",
+          "role_label": "",
+          "job_title": "",
+          "is_active": false,
+          "joined_at": ""
         }
-docs: Retrieve, update, or delete an expense category.
+docs: Retrieve, update, or remove a participant.

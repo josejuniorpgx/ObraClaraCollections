@@ -1,16 +1,13 @@
 info:
-  name: Create Follow-up
+  name: Add
   type: http
   seq: 8
   tags:
-  - incidents
+  - projects
 http:
   method: POST
-  url: '{{baseUrl}}/api/v1/projects/:project_pk/incidents/:incident_pk/follow-ups/'
+  url: '{{baseUrl}}/api/v1/projects/:project_pk/participants/'
   params:
-  - name: incident_pk
-    value: ''
-    type: path
   - name: project_pk
     value: ''
     type: path
@@ -25,12 +22,9 @@ settings:
 examples:
 - name: 201 Response
   request:
-    url: '{{baseUrl}}/api/v1/projects/:project_pk/incidents/:incident_pk/follow-ups/'
+    url: '{{baseUrl}}/api/v1/projects/:project_pk/participants/'
     method: POST
     params:
-    - name: incident_pk
-      value: ''
-      type: path
     - name: project_pk
       value: ''
       type: path
@@ -38,9 +32,9 @@ examples:
       type: json
       data: |-
         {
-          "comment": "",
-          "status": "",
-          "visible_to_client": false
+          "email": "",
+          "role": "owner",
+          "job_title": ""
         }
   response:
     status: 201
@@ -52,9 +46,8 @@ examples:
       type: json
       data: |-
         {
-          "id": "",
-          "comment": "",
-          "status": "",
-          "visible_to_client": false
+          "email": "",
+          "role": "owner",
+          "job_title": ""
         }
-docs: List and create follow-ups for an incident.
+docs: List active participants or invite a new one.

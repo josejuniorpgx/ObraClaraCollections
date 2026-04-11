@@ -1,11 +1,11 @@
 info:
-  name: Patch Participant
+  name: Remove
   type: http
-  seq: 11
+  seq: 12
   tags:
   - projects
 http:
-  method: PATCH
+  method: DELETE
   url: '{{baseUrl}}/api/v1/projects/:project_pk/participants/:id/'
   params:
   - name: id
@@ -14,8 +14,6 @@ http:
   - name: project_pk
     value: ''
     type: path
-  body:
-    type: json
   auth: inherit
 settings:
   encodeUrl: true
@@ -23,10 +21,11 @@ settings:
   followRedirects: true
   maxRedirects: 5
 examples:
-- name: 200 Response
+- name: 204 Response
+  description: No response body
   request:
     url: '{{baseUrl}}/api/v1/projects/:project_pk/participants/:id/'
-    method: PATCH
+    method: DELETE
     params:
     - name: id
       value: ''
@@ -34,26 +33,10 @@ examples:
     - name: project_pk
       value: ''
       type: path
-    body:
-      type: json
-      data: |-
-        {
-          "role": "owner",
-          "job_title": "",
-          "is_active": false
-        }
   response:
-    status: 200
-    statusText: OK
-    headers:
-    - name: Content-Type
-      value: application/json
+    status: 204
+    statusText: No Content
     body:
-      type: json
-      data: |-
-        {
-          "role": "owner",
-          "job_title": "",
-          "is_active": false
-        }
+      type: text
+      data: ''
 docs: Retrieve, update, or remove a participant.

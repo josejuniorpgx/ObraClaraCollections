@@ -1,12 +1,12 @@
 info:
-  name: Get Participant
+  name: Get
   type: http
-  seq: 9
+  seq: 3
   tags:
-  - projects
+  - expenses
 http:
   method: GET
-  url: '{{baseUrl}}/api/v1/projects/:project_pk/participants/:id/'
+  url: '{{baseUrl}}/api/v1/projects/:project_pk/expenses/categories/:id/'
   params:
   - name: id
     value: ''
@@ -23,7 +23,7 @@ settings:
 examples:
 - name: 200 Response
   request:
-    url: '{{baseUrl}}/api/v1/projects/:project_pk/participants/:id/'
+    url: '{{baseUrl}}/api/v1/projects/:project_pk/expenses/categories/:id/'
     method: GET
     params:
     - name: id
@@ -43,11 +43,7 @@ examples:
       data: |-
         {
           "id": "",
-          "user": "",
-          "role": "owner",
-          "role_label": "",
-          "job_title": "",
-          "is_active": false,
-          "joined_at": ""
+          "name": "",
+          "image": ""
         }
-docs: Retrieve, update, or remove a participant.
+docs: Retrieve, update, or delete an expense category.

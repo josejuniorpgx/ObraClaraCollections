@@ -1,5 +1,5 @@
 info:
-  name: Get Follow-up
+  name: Get
   type: http
   seq: 9
   tags:

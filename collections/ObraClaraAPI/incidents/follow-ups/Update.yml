@@ -1,14 +1,17 @@
 info:
-  name: Update Category
+  name: Update
   type: http
-  seq: 4
+  seq: 10
   tags:
-  - expenses
+  - incidents
 http:
   method: PUT
-  url: '{{baseUrl}}/api/v1/projects/:project_pk/expenses/categories/:id/'
+  url: '{{baseUrl}}/api/v1/projects/:project_pk/incidents/:incident_pk/follow-ups/:id/'
   params:
   - name: id
+    value: ''
+    type: path
+  - name: incident_pk
     value: ''
     type: path
   - name: project_pk
@@ -25,10 +28,13 @@ settings:
 examples:
 - name: 200 Response
   request:
-    url: '{{baseUrl}}/api/v1/projects/:project_pk/expenses/categories/:id/'
+    url: '{{baseUrl}}/api/v1/projects/:project_pk/incidents/:incident_pk/follow-ups/:id/'
     method: PUT
     params:
     - name: id
+      value: ''
+      type: path
+    - name: incident_pk
       value: ''
       type: path
     - name: project_pk
@@ -38,8 +44,9 @@ examples:
       type: json
       data: |-
         {
-          "name": "",
-          "image": ""
+          "comment": "",
+          "status": "",
+          "visible_to_client": false
         }
   response:
     status: 200
@@ -51,7 +58,9 @@ examples:
       type: json
       data: |-
         {
-          "name": "",
-          "image": ""
+          "id": "",
+          "comment": "",
+          "status": "",
+          "visible_to_client": false
         }
-docs: Retrieve, update, or delete an expense category.
+docs: Retrieve, update, or delete a follow-up.

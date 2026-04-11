@@ -1,5 +1,5 @@
 info:
-  name: Delete Follow-up
+  name: Delete
   type: http
   seq: 12
   tags:
