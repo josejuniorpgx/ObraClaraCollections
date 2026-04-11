@@ -2,7 +2,7 @@ name: Local
 variables:
   - name: baseUrl
     value: http://127.0.0.1:8000
-  - name: token
-    value: ""
-  - name: refresh_token
-    value: ""
+  - secret: true
+    name: token
+  - secret: true
+    name: refresh_token
