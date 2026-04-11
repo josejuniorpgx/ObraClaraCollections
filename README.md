@@ -46,7 +46,7 @@ collections/ObraClaraAPI/
 
 ## Variables de environment
 
-Todas las variables son `secret: true` para evitar conflictos de merge y proteger datos sensibles. Los valores se configuran desde Bruno y no se commitean.
+Todas las variables son `secret: true` excepto `baseUrl` que es publica. Esto evita conflictos de merge y protege datos sensibles.
 
 | Variable         | Descripcion                          |
 |------------------|--------------------------------------|

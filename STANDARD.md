@@ -38,11 +38,12 @@ Prompt de referencia para **crear** y **actualizar** colecciones Bruno alineadas
 
 | Tipo              | Convencion                        | Ejemplo                       |
 |-------------------|-----------------------------------|-------------------------------|
-| URL base          | camelCase, `secret: true`         | `baseUrl`                     |
+| URL base          | camelCase, **publica** (con `value`)| `baseUrl`                     |
 | Tokens            | snake_case, `secret: true`        | `token`, `refresh_token`      |
 | IDs de recurso    | snake_case, sufijo `_id` o `_pk`, `secret: true` | `project_pk`, `stage_id`, `incident_id` |
 
-> **Todas** las variables son `secret: true`. Esto evita conflictos de merge (los valores no se commitean al repo) y protege datos sensibles.
+> `baseUrl` es la unica variable **publica** (no secret). Permite identificar rapidamente a que entorno apunta cada environment.
+> El resto son `secret: true` para evitar conflictos de merge y proteger datos sensibles.
 >
 > `project_pk` usa `_pk` porque asi lo espera la URL (`:project_pk`). Los demas usan `_id`.
 
@@ -160,8 +161,8 @@ Cada environment tiene las mismas variables. Los tokens van como `secret: true`.
 ```yaml
 name: Local
 variables:
-  - secret: true
-    name: baseUrl
+  - name: baseUrl
+    value: ""
   - secret: true
     name: token
   - secret: true
@@ -184,7 +185,7 @@ variables:
 
 ### Reglas
 
-- **Todas** las variables son `secret: true` — evita conflictos de merge y protege datos sensibles. Los valores se configuran desde Bruno, nunca se commitean
+- **Todas** las variables son `secret: true` **excepto `baseUrl`** que es publica (con `value`). Esto permite identificar a que entorno apunta cada environment
 - `baseUrl` **sin** trailing slash (`http://host:8000`, NO `http://host:8000/`)
 - Agregar una variable `<recurso>_id` por cada recurso que tenga Create
 - Al agregar un nuevo recurso, agregar su variable de ID a **todos** los environments

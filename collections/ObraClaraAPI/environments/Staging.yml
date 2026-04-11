@@ -1,7 +1,7 @@
 name: Staging
 variables:
-  - secret: true
-    name: baseUrl
+  - name: baseUrl
+    value: https://staging.obraclara.com
   - secret: true
     name: token
   - secret: true
