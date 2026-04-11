@@ -38,10 +38,12 @@ Prompt de referencia para **crear** y **actualizar** colecciones Bruno alineadas
 
 | Tipo              | Convencion                        | Ejemplo                       |
 |-------------------|-----------------------------------|-------------------------------|
-| URL base          | camelCase                         | `baseUrl`                     |
+| URL base          | camelCase, `secret: true`         | `baseUrl`                     |
 | Tokens            | snake_case, `secret: true`        | `token`, `refresh_token`      |
-| IDs de recurso    | snake_case, sufijo `_id` o `_pk`  | `project_pk`, `stage_id`, `incident_id` |
+| IDs de recurso    | snake_case, sufijo `_id` o `_pk`, `secret: true` | `project_pk`, `stage_id`, `incident_id` |
 
+> **Todas** las variables son `secret: true`. Esto evita conflictos de merge (los valores no se commitean al repo) y protege datos sensibles.
+>
 > `project_pk` usa `_pk` porque asi lo espera la URL (`:project_pk`). Los demas usan `_id`.
 
 ### URLs de endpoint
@@ -158,32 +160,32 @@ Cada environment tiene las mismas variables. Los tokens van como `secret: true`.
 ```yaml
 name: Local
 variables:
-  - name: baseUrl
-    value: http://127.0.0.1:8000
+  - secret: true
+    name: baseUrl
   - secret: true
     name: token
   - secret: true
     name: refresh_token
-  - name: project_pk
-    value: ""
-  - name: stage_id
-    value: ""
-  - name: participant_id
-    value: ""
-  - name: expense_id
-    value: ""
-  - name: incident_id
-    value: ""
-  - name: report_id
-    value: ""
-  - name: supplier_id
-    value: ""
+  - secret: true
+    name: project_pk
+  - secret: true
+    name: stage_id
+  - secret: true
+    name: participant_id
+  - secret: true
+    name: expense_id
+  - secret: true
+    name: incident_id
+  - secret: true
+    name: report_id
+  - secret: true
+    name: supplier_id
 ```
 
 ### Reglas
 
+- **Todas** las variables son `secret: true` — evita conflictos de merge y protege datos sensibles. Los valores se configuran desde Bruno, nunca se commitean
 - `baseUrl` **sin** trailing slash (`http://host:8000`, NO `http://host:8000/`)
-- `token` y `refresh_token` siempre `secret: true`
 - Agregar una variable `<recurso>_id` por cada recurso que tenga Create
 - Al agregar un nuevo recurso, agregar su variable de ID a **todos** los environments
 

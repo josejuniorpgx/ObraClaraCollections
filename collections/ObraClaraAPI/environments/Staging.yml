@@ -1,22 +1,22 @@
 name: Staging
 variables:
-  - name: baseUrl
-    value: https://staging.obraclara.com
+  - secret: true
+    name: baseUrl
   - secret: true
     name: token
   - secret: true
     name: refresh_token
-  - name: project_pk
-    value: ""
-  - name: stage_id
-    value: ""
-  - name: participant_id
-    value: ""
-  - name: expense_id
-    value: ""
-  - name: incident_id
-    value: ""
-  - name: report_id
-    value: ""
-  - name: supplier_id
-    value: ""
+  - secret: true
+    name: project_pk
+  - secret: true
+    name: stage_id
+  - secret: true
+    name: participant_id
+  - secret: true
+    name: expense_id
+  - secret: true
+    name: incident_id
+  - secret: true
+    name: report_id
+  - secret: true
+    name: supplier_id
