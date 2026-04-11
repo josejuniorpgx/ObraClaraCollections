@@ -12,13 +12,10 @@ http:
     type: json
     data: |-
       {
-        "username": "",
+        "username": "admin",
         "email": "",
-        "password": ""
+        "password": "admin"
       }
-  auth:
-    type: bearer
-    token: "{{token}}"
 
 settings:
   encodeUrl: true
