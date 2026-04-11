@@ -60,3 +60,9 @@ examples:
           "visible_to_client": false
         }
 docs: CRUD for expenses scoped to a project.
+script:
+  post-response: |-
+    const body = res.getBody();
+    if (body.id) {
+      bru.setEnvVar("expense_id", body.id);
+    }

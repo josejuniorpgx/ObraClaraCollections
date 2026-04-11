@@ -49,3 +49,9 @@ examples:
           "image": ""
         }
 docs: CRUD for suppliers scoped to the authenticated user.
+script:
+  post-response: |-
+    const body = res.getBody();
+    if (body.id) {
+      bru.setEnvVar("supplier_id", body.id);
+    }

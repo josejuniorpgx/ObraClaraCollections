@@ -6,3 +6,17 @@ variables:
     name: token
   - secret: true
     name: refresh_token
+  - name: project_pk
+    value: ""
+  - name: stage_id
+    value: ""
+  - name: participant_id
+    value: ""
+  - name: expense_id
+    value: ""
+  - name: incident_id
+    value: ""
+  - name: report_id
+    value: ""
+  - name: supplier_id
+    value: ""

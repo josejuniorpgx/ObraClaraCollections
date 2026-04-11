@@ -51,3 +51,9 @@ examples:
           "job_title": ""
         }
 docs: List active participants or invite a new one.
+script:
+  post-response: |-
+    const body = res.getBody();
+    if (body.id) {
+      bru.setEnvVar("participant_id", body.id);
+    }

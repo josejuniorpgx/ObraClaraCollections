@@ -51,3 +51,9 @@ examples:
           "period_end": ""
         }
 docs: CRUD for reports scoped to a project.
+script:
+  post-response: |-
+    const body = res.getBody();
+    if (body.id) {
+      bru.setEnvVar("report_id", body.id);
+    }

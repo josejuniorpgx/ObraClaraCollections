@@ -64,3 +64,9 @@ examples:
           "progress_entry": ""
         }
 docs: CRUD for incidents scoped to a project.
+script:
+  post-response: |-
+    const body = res.getBody();
+    if (body.id) {
+      bru.setEnvVar("incident_id", body.id);
+    }

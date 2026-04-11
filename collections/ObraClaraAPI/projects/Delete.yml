@@ -1,38 +1,42 @@
 info:
   name: Delete
   type: http
-  seq: 4
+  seq: 5
   tags:
-  - projects
+    - projects
+
 http:
   method: DELETE
-  url: '{{baseUrl}}/api/v1/projects/:id/'
+  url: "{{baseUrl}}/api/v1/projects/:id/"
   params:
-  - name: id
-    value: ''
-    type: path
-    description: Un Cadena UUID que identifique este project.
+    - name: id
+      value: ""
+      type: path
+      description: Un Cadena UUID que identifique este project.
   auth: inherit
+
 settings:
   encodeUrl: true
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
 examples:
-- name: 204 Response
-  description: No response body
-  request:
-    url: '{{baseUrl}}/api/v1/projects/:id/'
-    method: DELETE
-    params:
-    - name: id
-      value: ''
-      type: path
-      description: Un Cadena UUID que identifique este project.
-  response:
-    status: 204
-    statusText: No Content
-    body:
-      type: text
-      data: ''
+  - name: 204 Response
+    description: No response body
+    request:
+      url: "{{baseUrl}}/api/v1/projects/:id/"
+      method: DELETE
+      params:
+        - name: id
+          value: ""
+          type: path
+          description: Un Cadena UUID que identifique este project.
+    response:
+      status: 204
+      statusText: No Content
+      body:
+        type: text
+        data: ""
+
 docs: CRUD for projects scoped to the authenticated user's participation.

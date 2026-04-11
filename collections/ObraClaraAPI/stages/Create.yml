@@ -53,3 +53,9 @@ examples:
           "order": 0
         }
 docs: CRUD for stages scoped to a project.
+script:
+  post-response: |-
+    const body = res.getBody();
+    if (body.id) {
+      bru.setEnvVar("stage_id", body.id);
+    }

@@ -49,3 +49,9 @@ examples:
           "image": ""
         }
 docs: List and create expense categories for a project.
+script:
+  post-response: |-
+    const body = res.getBody();
+    if (body.id) {
+      bru.setEnvVar("category_id", body.id);
+    }
