@@ -1,7 +1,7 @@
 info:
   name: Get by Token
   type: http
-  seq: 4
+  seq: 3
   tags:
   - invitations
 http:

@@ -1,7 +1,7 @@
 info:
   name: Patch
   type: http
-  seq: 8
+  seq: 7
   tags:
   - suppliers
 http:

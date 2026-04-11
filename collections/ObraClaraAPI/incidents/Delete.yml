@@ -1,7 +1,7 @@
 info:
   name: Delete
   type: http
-  seq: 4
+  seq: 7
   tags:
   - incidents
 http:

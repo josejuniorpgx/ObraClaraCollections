@@ -1,7 +1,7 @@
 info:
   name: Verify Token
   type: http
-  seq: 9
+  seq: 5
   tags:
   - auth
 http:

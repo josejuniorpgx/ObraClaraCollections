@@ -1,7 +1,7 @@
 info:
   name: List
   type: http
-  seq: 7
+  seq: 1
   tags:
   - projects
 http:

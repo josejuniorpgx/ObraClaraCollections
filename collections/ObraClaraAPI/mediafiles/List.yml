@@ -1,7 +1,7 @@
 info:
   name: List
   type: http
-  seq: 2
+  seq: 1
   tags:
   - mediafiles
 http:

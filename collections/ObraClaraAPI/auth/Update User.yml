@@ -1,7 +1,7 @@
 info:
   name: Update User
   type: http
-  seq: 6
+  seq: 13
   tags:
   - auth
 http:

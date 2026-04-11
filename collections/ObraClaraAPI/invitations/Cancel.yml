@@ -1,7 +1,7 @@
 info:
   name: Cancel
   type: http
-  seq: 3
+  seq: 4
   tags:
   - invitations
 http:

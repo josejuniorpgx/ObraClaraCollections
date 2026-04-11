@@ -1,7 +1,7 @@
 info:
   name: Delete
   type: http
-  seq: 6
+  seq: 7
   tags:
   - expenses
 http:

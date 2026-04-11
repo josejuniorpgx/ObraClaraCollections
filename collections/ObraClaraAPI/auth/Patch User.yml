@@ -1,7 +1,7 @@
 info:
   name: Patch User
   type: http
-  seq: 7
+  seq: 14
   tags:
   - auth
 http:

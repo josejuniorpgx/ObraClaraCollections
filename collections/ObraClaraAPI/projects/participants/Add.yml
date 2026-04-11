@@ -1,7 +1,7 @@
 info:
   name: Add
   type: http
-  seq: 8
+  seq: 2
   tags:
   - projects
 http:

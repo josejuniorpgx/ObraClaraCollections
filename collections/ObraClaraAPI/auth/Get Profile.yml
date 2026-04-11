@@ -1,7 +1,7 @@
 info:
   name: Get Profile
   type: http
-  seq: 14
+  seq: 8
   tags:
   - auth
 http:

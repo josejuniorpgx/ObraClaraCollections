@@ -1,7 +1,7 @@
 info:
   name: Get User
   type: http
-  seq: 5
+  seq: 12
   tags:
   - auth
 http:

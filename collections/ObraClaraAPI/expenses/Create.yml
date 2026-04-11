@@ -1,7 +1,7 @@
 info:
   name: Create
   type: http
-  seq: 8
+  seq: 4
   tags:
   - expenses
 http:
