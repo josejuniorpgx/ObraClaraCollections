@@ -48,3 +48,8 @@ docs: |-
   Accepts the following POST parameters: token, uid,
       new_password1, new_password2
   Returns the success/fail message.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });

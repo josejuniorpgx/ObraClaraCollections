@@ -57,3 +57,8 @@ examples:
           "is_active": false
         }
 docs: Retrieve, update, or remove a participant.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });

@@ -1,7 +1,13 @@
 info:
   name: reports
   type: folder
-  seq: 1
+  seq: 10
 
 request:
   auth: inherit
+
+docs: |-
+  Project reports with data snapshots (MVP Phase 6).
+  Status: draft, published, archived. Snapshot is immutable once published.
+  OWNER only creates/publishes. COLLABORATOR/VIEWER see published reports.
+  Snapshot includes: project info, team, KPIs, progress, expenses by category/supplier, incidents.

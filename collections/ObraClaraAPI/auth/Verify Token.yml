@@ -36,3 +36,8 @@ examples:
 docs: |-
   Takes a token and indicates if it is valid.  This view provides no
   information about a token's fitness for a particular use.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });

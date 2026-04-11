@@ -1,7 +1,13 @@
 info:
   name: invitations
   type: folder
-  seq: 1
+  seq: 7
 
 request:
   auth: inherit
+
+docs: |-
+  Project invitation system. OWNER only can create/cancel.
+  Token-based (64 chars, auto-generated). Expires in 7 days.
+  Flow: OWNER creates -> shares link -> invitee GET public info -> POST accept (authenticated).
+  Role cannot be OWNER. Accepting creates a ProjectParticipant.

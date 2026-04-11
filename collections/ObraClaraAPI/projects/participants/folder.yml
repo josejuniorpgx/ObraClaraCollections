@@ -5,3 +5,9 @@ info:
 
 request:
   auth: inherit
+
+docs: |-
+  Manage project participants. OWNER only can add/update/remove.
+  Roles: owner, collaborator, viewer, client.
+  One active OWNER per project. Removal is soft-delete (is_active=false).
+  OWNER cannot self-remove or self-demote.

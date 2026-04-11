@@ -42,3 +42,8 @@ docs: |-
   Verifies the email associated with the provided key.
 
   Accepts the following POST parameter: key.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });

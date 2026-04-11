@@ -92,3 +92,8 @@ docs: |-
 
   File metadata (original_name, size, mime_type) is auto-populated
   on create/update from the uploaded file.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });

@@ -1,7 +1,13 @@
 info:
   name: projects
   type: folder
-  seq: 1
+  seq: 2
 
 request:
   auth: inherit
+
+docs: |-
+  CRUD for projects scoped to the authenticated user's participation.
+  Role-based access: OWNER, COLLABORATOR, VIEWER, CLIENT.
+  Creating a project auto-assigns OWNER role and seeds default stages (Start, Foundation, Structure).
+  Project types: construction, remodel.

@@ -34,3 +34,8 @@ examples:
       type: text
       data: ''
 docs: Accept an invitation. Must be authenticated.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });

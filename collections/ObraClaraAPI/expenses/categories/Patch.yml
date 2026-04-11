@@ -55,3 +55,8 @@ examples:
           "image": ""
         }
 docs: Retrieve, update, or delete an expense category.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });

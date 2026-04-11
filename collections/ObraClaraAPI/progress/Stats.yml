@@ -31,3 +31,13 @@ docs: |-
   A stage is "completed" when its base percentage + entry deltas >= 100.
   Entries without a stage are counted as in-progress.
   Respects visible_to_client for VIEWER/CLIENT roles.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });
+
+    test("Response is JSON", function() {
+      const contentType = res.getHeader("Content-Type");
+      expect(contentType).to.contain("application/json");
+    });

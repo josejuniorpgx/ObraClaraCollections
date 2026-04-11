@@ -5,3 +5,8 @@ info:
 
 request:
   auth: inherit
+
+docs: |-
+  Authentication and user management (django-allauth + dj-rest-auth + simplejwt).
+  Email-based authentication. JWT access/refresh tokens.
+  Includes login, register, password reset/change, email verification, and profile management.

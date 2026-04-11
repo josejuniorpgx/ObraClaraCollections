@@ -59,3 +59,8 @@ examples:
           "status": "draft"
         }
 docs: CRUD for reports scoped to a project.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });

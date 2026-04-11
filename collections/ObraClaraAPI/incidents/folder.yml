@@ -1,7 +1,14 @@
 info:
   name: incidents
   type: folder
-  seq: 1
+  seq: 6
 
 request:
   auth: inherit
+
+docs: |-
+  Incident tracking scoped to a project.
+  Priority: high, medium, low. Types: materials, climate, safety, design, labor, other.
+  Status: pending, in_progress, waiting, resolved (state machine transitions).
+  Responsible user must be OWNER or COLLABORATOR.
+  Includes global list across all user's projects.

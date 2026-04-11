@@ -55,3 +55,13 @@ examples:
           "visible_to_client": false
         }
 docs: Use InputSerializer for validation, DetailSerializer for response.
+script:
+  tests: |-
+    test("Status is 201", function() {
+      expect(res.getStatus()).to.equal(201);
+    });
+
+    test("Response has id", function() {
+      const body = res.getBody();
+      expect(body.id).to.be.a("string");
+    });

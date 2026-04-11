@@ -1,7 +1,14 @@
 info:
   name: progress
   type: folder
-  seq: 1
+  seq: 4
 
 request:
   auth: inherit
+
+docs: |-
+  Progress tracking with client visibility control.
+  Each entry has percentage_delta, linked to a stage.
+  Validation prevents stage completion exceeding 100%.
+  VIEWER/CLIENT only see entries with visible_to_client=true.
+  Includes global list and stats across all user's projects.

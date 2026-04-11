@@ -60,3 +60,8 @@ docs: |-
   Read-only fields: pk, email
 
   Returns UserModel fields.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });

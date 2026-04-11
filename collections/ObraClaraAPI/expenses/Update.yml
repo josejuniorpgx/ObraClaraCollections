@@ -68,3 +68,8 @@ examples:
           "visible_to_client": false
         }
 docs: CRUD for expenses scoped to a project.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });

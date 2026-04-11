@@ -70,3 +70,12 @@ script:
     if (body.id) {
       bru.setEnvVar("incident_id", body.id);
     }
+  tests: |-
+    test("Status is 201", function() {
+      expect(res.getStatus()).to.equal(201);
+    });
+
+    test("Response has id", function() {
+      const body = res.getBody();
+      expect(body.id).to.be.a("string");
+    });

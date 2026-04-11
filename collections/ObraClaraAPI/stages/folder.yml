@@ -1,7 +1,14 @@
 info:
   name: stages
   type: folder
-  seq: 1
+  seq: 3
 
 request:
   auth: inherit
+
+docs: |-
+  CRUD for stages scoped to a project.
+  Each stage tracks: name, percentage (base completion), budget_estimated, order.
+  Effective progress = min(stage.percentage + sum(ProgressEntry.percentage_delta), 100).
+  Project progress = average of all stages' effective progress.
+  OWNER/COLLABORATOR can create. Unique stage name per project.

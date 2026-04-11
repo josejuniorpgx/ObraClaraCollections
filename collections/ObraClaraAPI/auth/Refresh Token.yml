@@ -58,3 +58,8 @@ examples:
 docs: |-
   Takes a refresh type JSON web token and returns an access type JSON web
   token if the refresh token is valid.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });

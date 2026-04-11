@@ -5,3 +5,8 @@ info:
 
 request:
   auth: inherit
+
+docs: |-
+  Expense categories scoped to a project.
+  OWNER can full CRUD. COLLABORATOR can view and create.
+  Default categories are seeded on project creation.

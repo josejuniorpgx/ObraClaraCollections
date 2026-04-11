@@ -5,3 +5,8 @@ info:
 
 request:
   auth: inherit
+
+docs: |-
+  Follow-ups for incident remediation tracking.
+  Each follow-up has comment, status, and visible_to_client flag.
+  COLLABORATOR can update_own only. VIEWER/CLIENT see visible entries only.

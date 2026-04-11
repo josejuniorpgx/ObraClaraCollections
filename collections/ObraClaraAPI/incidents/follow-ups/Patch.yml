@@ -64,3 +64,8 @@ examples:
           "visible_to_client": false
         }
 docs: Retrieve, update, or delete a follow-up.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });

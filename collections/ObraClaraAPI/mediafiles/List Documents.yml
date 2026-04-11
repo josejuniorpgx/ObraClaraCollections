@@ -101,3 +101,13 @@ docs: |-
   These are direct project documents, not evidence from other modules.
   Permissions:
       - Any active project participant can list.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });
+
+    test("Response is JSON", function() {
+      const contentType = res.getHeader("Content-Type");
+      expect(contentType).to.contain("application/json");
+    });

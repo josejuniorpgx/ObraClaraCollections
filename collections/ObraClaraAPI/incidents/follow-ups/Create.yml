@@ -58,3 +58,13 @@ examples:
           "visible_to_client": false
         }
 docs: List and create follow-ups for an incident.
+script:
+  tests: |-
+    test("Status is 201", function() {
+      expect(res.getStatus()).to.equal(201);
+    });
+
+    test("Response has id", function() {
+      const body = res.getBody();
+      expect(body.id).to.be.a("string");
+    });

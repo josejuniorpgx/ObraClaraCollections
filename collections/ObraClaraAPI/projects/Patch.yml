@@ -66,3 +66,8 @@ examples:
           }
 
 docs: CRUD for projects scoped to the authenticated user's participation.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });

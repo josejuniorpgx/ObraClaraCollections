@@ -84,3 +84,13 @@ docs: |-
 
   File metadata (original_name, size, mime_type) is auto-populated
   on create/update from the uploaded file.
+script:
+  tests: |-
+    test("Status is 201", function() {
+      expect(res.getStatus()).to.equal(201);
+    });
+
+    test("Response has id", function() {
+      const body = res.getBody();
+      expect(body.id).to.be.a("string");
+    });

@@ -42,3 +42,8 @@ docs: |-
   Resends another email to an unverified email.
 
   Accepts the following POST parameter: email.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });
