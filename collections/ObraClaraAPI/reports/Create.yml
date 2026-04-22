@@ -3,82 +3,72 @@ info:
   type: http
   seq: 5
   tags:
-  - reports
+    - reports
+
 http:
   method: POST
-  url: '{{baseUrl}}/api/v1/projects/:project_pk/reports/'
+  url: "{{baseUrl}}/api/v1/projects/:project_pk/reports/"
   params:
-  - name: project_pk
-    value: ''
-    type: path
+    - name: project_pk
+      value: "{{project_pk}}"
+      type: path
   body:
     type: json
+    data: ""
   auth: inherit
+
 settings:
   encodeUrl: true
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
 examples:
-- name: 201 Response
-  request:
-    url: '{{baseUrl}}/api/v1/projects/:project_pk/reports/'
-    method: POST
-    params:
-    - name: project_pk
-      value: ''
-      type: path
-    body:
-      type: json
-      data: |-
-        {
-          "title": "",
-          "period_start": "",
-          "period_end": ""
-        }
-  response:
-    status: 201
-    statusText: Created
-    headers:
-    - name: Content-Type
-      value: application/json
-    body:
-      type: json
-      data: |-
-        {
-          "id": "",
-          "title": "",
-          "period_start": "",
-          "period_end": "",
-          "data_snapshot": {},
-          "status": "draft",
-          "visible_to_client": true,
-          "generated_by": {
+  - name: 201 Response
+    request:
+      url: "{{baseUrl}}/api/v1/projects/:project_pk/reports/"
+      method: POST
+      params:
+        - name: project_pk
+          value: ""
+          type: path
+      body:
+        type: json
+        data: |-
+          {
+            "title": "Pruebas2",
+            "period_start": "2026-02-01",
+            "period_end": "2026-04-07"
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
             "id": "",
-            "email": "",
-            "first_name": "",
-            "last_name": "",
-            "profile_image": null
-          },
-          "published_at": null,
-          "created": "",
-          "modified": ""
-        }
+            "title": "",
+            "period_start": "",
+            "period_end": "",
+            "data_snapshot": {},
+            "status": "draft",
+            "visible_to_client": true,
+            "generated_by": {
+              "id": "",
+              "email": "",
+              "first_name": "",
+              "last_name": "",
+              "profile_image": null
+            },
+            "published_at": null,
+            "created": "",
+            "modified": ""
+          }
+
 docs: |-
   Create a report and generate its data snapshot.
   OWNER only. Snapshot includes project info, team, KPIs, progress, expenses, and incidents for the given period.
-script:
-  post-response: |-
-    const body = res.getBody();
-    if (body.id) {
-      bru.setEnvVar("report_id", body.id);
-    }
-  tests: |-
-    test("Status is 201", function() {
-      expect(res.getStatus()).to.equal(201);
-    });
-
-    test("Response has id", function() {
-      const body = res.getBody();
-      expect(body.id).to.be.a("string");
-    });

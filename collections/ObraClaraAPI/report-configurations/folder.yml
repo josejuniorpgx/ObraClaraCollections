@@ -1,0 +1,13 @@
+info:
+  name: report-configurations
+  type: folder
+  seq: 11
+
+request:
+  auth: inherit
+
+docs: |-
+  Scheduling configuration for automatic report generation.
+  One configuration per project (OneToOne). OWNER only.
+  Defines frequency_days, is_active, and sections_config for scheduled runs.
+  COLLABORATOR, VIEWER and CLIENT have no access.

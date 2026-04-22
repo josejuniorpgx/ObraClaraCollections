@@ -3,12 +3,15 @@ info:
   type: http
   seq: 3
   tags:
-    - progress
+    - report-configurations
 
 http:
   method: GET
-  url: "{{baseUrl}}/api/v1/projects/:project_pk/progress/"
+  url: "{{baseUrl}}/api/v1/projects/:project_pk/report-configurations/"
   params:
+    - name: project_pk
+      value: "{{project_pk}}"
+      type: path
     - name: ordering
       value: ""
       type: query
@@ -24,9 +27,6 @@ http:
       type: query
       description: Número de resultados a devolver por página.
       disabled: true
-    - name: project_pk
-      value: "{{project_pk}}"
-      type: path
     - name: search
       value: ""
       type: query
@@ -43,31 +43,27 @@ settings:
 examples:
   - name: 200 Response
     request:
-      url: "{{baseUrl}}/api/v1/projects/:project_pk/progress/"
+      url: "{{baseUrl}}/api/v1/projects/:project_pk/report-configurations/"
       method: GET
       params:
+        - name: project_pk
+          value: ""
+          type: path
         - name: ordering
           value: ""
           type: query
-          description: Qué campo usar para ordenar los resultados.
           disabled: true
         - name: page
           value: ""
           type: query
-          description: Un número de página dentro del conjunto de resultados paginado.
           disabled: true
         - name: page_size
           value: ""
           type: query
-          description: Número de resultados a devolver por página.
           disabled: true
-        - name: project_pk
-          value: ""
-          type: path
         - name: search
           value: ""
           type: query
-          description: Un término de búsqueda.
           disabled: true
     response:
       status: 200
@@ -79,23 +75,34 @@ examples:
         type: json
         data: |-
           {
-            "count": 123,
-            "next": "http://api.example.org/accounts/?page=4",
-            "previous": "http://api.example.org/accounts/?page=2",
+            "count": 0,
+            "next": null,
+            "previous": null,
             "results": [
               {
                 "id": "",
-                "stage": "",
-                "description": "",
-                "date": "",
-                "percentage_delta": "",
-                "visible_to_client": false,
-                "accumulated_progress": "",
-                "total_expenses": "",
-                "created_by": "",
-                "created": ""
+                "project": "",
+                "frequency_days": 7,
+                "is_active": true,
+                "last_run": null,
+                "next_run": "",
+                "sections_config": {},
+                "created": "",
+                "modified": ""
               }
             ]
           }
 
-docs: CRUD for progress entries scoped to a project.
+docs: |-
+  List report configurations for a project (0 or 1 result).
+  OWNER only.
+script:
+  tests: |-
+    test("Status is 200", function() {
+      expect(res.getStatus()).to.equal(200);
+    });
+
+    test("Response is JSON", function() {
+      const contentType = res.getHeader("Content-Type");
+      expect(contentType).to.contain("application/json");
+    });
