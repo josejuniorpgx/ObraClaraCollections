@@ -14,7 +14,6 @@ http:
       type: path
   body:
     type: json
-    data: ""
   auth: inherit
 
 settings:
@@ -36,9 +35,9 @@ examples:
         type: json
         data: |-
           {
-            "title": "Pruebas2",
-            "period_start": "2026-02-01",
-            "period_end": "2026-04-07"
+            "title": "",
+            "period_start": "",
+            "period_end": ""
           }
     response:
       status: 201
@@ -65,6 +64,7 @@ examples:
               "profile_image": null
             },
             "published_at": null,
+            "pdf_file": null,
             "created": "",
             "modified": ""
           }
@@ -72,3 +72,18 @@ examples:
 docs: |-
   Create a report and generate its data snapshot.
   OWNER only. Snapshot includes project info, team, KPIs, progress, expenses, and incidents for the given period.
+script:
+  post-response: |-
+    const body = res.getBody();
+    if (body.id) {
+      bru.setEnvVar("report_id", body.id);
+    }
+  tests: |-
+    test("Status is 201", function() {
+      expect(res.getStatus()).to.equal(201);
+    });
+
+    test("Response has id", function() {
+      const body = res.getBody();
+      expect(body.id).to.be.a("string");
+    });
