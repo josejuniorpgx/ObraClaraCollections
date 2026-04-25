@@ -28,7 +28,8 @@ examples:
           "password1": "",
           "password2": "",
           "first_name": "",
-          "last_name": ""
+          "last_name": "",
+          "profile_image": ""
         }
   response:
     status: 201
@@ -58,7 +59,8 @@ examples:
 docs: |-
   Registers a new user.
 
-  Accepts the following POST parameters: username, email, password1, password2.
+  Accepts: email, first_name, last_name, password1, password2.
+  Optional: profile_image (send the request as multipart/form-data when including a file).
 script:
   tests: |-
     test("Status is 201", function() {
