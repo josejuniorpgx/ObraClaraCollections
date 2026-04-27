@@ -29,7 +29,8 @@ examples:
           "password2": "",
           "first_name": "",
           "last_name": "",
-          "profile_image": ""
+          "profile_image": "",
+          "date_of_birth": ""
         }
   response:
     status: 201
