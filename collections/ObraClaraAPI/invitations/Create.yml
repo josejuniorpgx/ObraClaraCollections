@@ -3,51 +3,101 @@ info:
   type: http
   seq: 2
   tags:
-  - invitations
+    - invitations
+
 http:
   method: POST
-  url: '{{baseUrl}}/api/v1/projects/:project_pk/invitations/'
+  url: "{{baseUrl}}/api/v1/projects/:project_pk/invitations/"
   params:
-  - name: project_pk
-    value: ''
-    type: path
+    - name: project_pk
+      value: "{{project_pk}}"
+      type: path
   body:
     type: json
+    data: ""
   auth: inherit
+
 settings:
   encodeUrl: true
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
 examples:
-- name: 201 Response
-  request:
-    url: '{{baseUrl}}/api/v1/projects/:project_pk/invitations/'
-    method: POST
-    params:
-    - name: project_pk
-      value: ''
-      type: path
-    body:
-      type: json
-      data: |-
-        {
-          "role": "owner",
-          "job_title": ""
-        }
-  response:
-    status: 201
-    statusText: Created
-    headers:
-    - name: Content-Type
-      value: application/json
-    body:
-      type: json
-      data: |-
-        {
-          "role": "owner",
-          "job_title": ""
-        }
+  - name: 200 Response
+    request:
+      url: "{{baseUrl}}/api/v1/projects/:project_pk/invitations/"
+      method: POST
+      params:
+        - name: project_pk
+          value: "{{project_pk}}"
+          type: path
+      body:
+        type: json
+        data: |-
+          {
+            "role": "client",
+            "job_title": "",
+            "invitee_email": "emaild@email.com"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: date
+          value: Sat, 25 Apr 2026 00:20:21 GMT
+        - name: server
+          value: WSGIServer/0.2 CPython/3.14.3
+        - name: content-type
+          value: application/json
+        - name: vary
+          value: Accept, Accept-Language, origin
+        - name: allow
+          value: GET, POST, HEAD, OPTIONS
+        - name: x-frame-options
+          value: DENY
+        - name: content-length
+          value: "703"
+        - name: content-language
+          value: es
+        - name: x-content-type-options
+          value: nosniff
+        - name: referrer-policy
+          value: same-origin
+        - name: cross-origin-opener-policy
+          value: same-origin
+      body:
+        type: json
+        data: |-
+          {
+            "id": "40fdab11-9a60-44fd-beca-0758b666d370",
+            "token": "0gSnwy2Y8XXgYYnS9H5kyaTp4UzCcJTe841pLfpYXsI",
+            "code": "BNNKNYWG",
+            "project": "e48179b7-7bd2-4da9-8b69-51323a3757ab",
+            "project_name": "Xibal",
+            "role": "client",
+            "role_label": "Client",
+            "job_title": "",
+            "invitee_email": "emaild@email.com",
+            "invitee_phone": null,
+            "invitee_first_name": "",
+            "invitee_last_name": "",
+            "invited_by": {
+              "id": "ccf42640-10d2-48d3-8d3a-b8ad5f804ca1",
+              "email": "admin@admin.com",
+              "first_name": "admin",
+              "last_name": "admin",
+              "profile_image": "/media/users/avatars/profile.jpg"
+            },
+            "status": "pending",
+            "accepted_by": null,
+            "is_expired": false,
+            "is_usable": true,
+            "expires_at": "2026-04-26T06:19:51.557044-06:00",
+            "created": "2026-04-24T18:19:51.556968-06:00",
+            "reused": true
+          }
+
 docs: List project invitations or create a new one. OWNER only.
 script:
   tests: |-
